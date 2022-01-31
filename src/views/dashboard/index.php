@@ -8,10 +8,7 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer> </script>
-    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.css" />
-    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid-theme.min.css" />
     <link type="text/css" rel="stylesheet" href="<?= CSS ?>/main.css" />
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.js" defer></script>
     <script src="<?= JS ?>//index.js" defer></script>
     <!-- <script src="../assets/js/location.js" defer></script> -->
     <title>Document</title>
@@ -52,7 +49,7 @@
                 <td><?= $employee->postalCode ?></td>
                 <td><?= $employee->phoneNumber ?></td>
                 <td class="d-flex justify-content-between">
-                    <a href="./library/employeeController.php?v=view&id=<?= $employee->id?>" class="btn btn-outline-info"><i class="far fa-eye" data-viewId=<?= $employee->id?> ></i></a>
+                    <a href="<?= BASE_URL . 'employee/getEmployee/' . $employee->id?>" class="btn btn-outline-info"><i class="far fa-eye" data-viewId=<?= $employee->id?> ></i></a>
                     <button data-update='<?= $employee->id?>' class="btn btn-outline-secondary"><i class="fas fa-user-edit"></i></button>
                     <a data-delete = '<?= $employee->id?>' class="btn btn-outline-danger" href="#deleteModal" data-toggle="modal"><i class="far fa-trash-alt"></i></a>
                 </td>
@@ -68,5 +65,3 @@
 
 </body>
 </html>
-
-<form action="/src/employee.php" method="post"></form>
