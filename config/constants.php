@@ -32,5 +32,8 @@ define('CSS', BASE_URL . '/public/assets/css');
 //JS
 define('JS', BASE_URL . '/public/assets/js');
 
+//PARTIALS
+define('PARTIALS', BASE_PATH . '/public/assets/partials');
+
 // QUERIES
 define("QUERIES", BASE_PATH . '/db');

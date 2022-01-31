@@ -7,5 +7,10 @@ require_once './config/db.php';
 // Include the router
 require_once LIBS . '/Router.php';
 
+// Include the base classes
+include LIBS . '/classes/Model.php';
+include LIBS . '/classes/View.php';
+include LIBS . '/classes/Controller.php';
+
 $router = new Router();
 

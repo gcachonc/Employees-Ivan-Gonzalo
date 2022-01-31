@@ -1,4 +1,5 @@
 <?php
+
 class Router 
 {
     public function __construct() 
@@ -13,6 +14,10 @@ class Router
         if (file_exists($controller_file)) {
             require_once $controller_file;
             $controller = new $controller;
+
+            if (isset($url[1])) {
+                $controller -> {$url[1]}();
+            }
         }
 
     }

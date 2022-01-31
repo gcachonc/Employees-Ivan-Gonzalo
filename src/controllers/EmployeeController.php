@@ -6,4 +6,9 @@ class EmployeeController extends Controller
     {
         parent::__construct();
     }
+
+    function dashboard()
+    {
+        $this->view->render("employee/dashboard");
+    }
 }
