@@ -17,7 +17,9 @@
     <?php
     include PARTIALS . "/header.php";
     ?>
-
+    <p>
+        <?= $this->mensaje ?>
+    </p>
     <!-- Main table with employees data -->
     <main class="container-xl my-5">
     <table class="table table-striped table-bordered">
@@ -31,7 +33,7 @@
             <th>State</th>
             <th>Postal Code</th>
             <th>Phone Number</th>
-            <th><button id="btn-add-employee"class="btn btn-primary w-100 text-center" href="#">Add Employee</button></th>
+            <th><a id="btn-add-employee"class="btn btn-primary w-100 text-center" href="<?= BASE_URL . '/employee/render'?>">Add Employee</a></th>
         </tr>
         </thead>
         <!-- Loop through all employees in the JSON and create a new row in the table body -->
@@ -39,7 +41,7 @@
         <?php 
         $employees = $this->employees;
         foreach ($employees as $employee) : ?>
-            <tr>
+            <tr id="row-<?= $employee->id ?>">
                 <td><?= $employee->name ?></td>
                 <td><?= $employee->email ?></td>
                 <td><?= $employee->age ?></td>
@@ -50,8 +52,9 @@
                 <td><?= $employee->phoneNumber ?></td>
                 <td class="d-flex justify-content-between">
                     <a href="<?= BASE_URL . 'employee/getEmployee/' . $employee->id?>" class="btn btn-outline-info"><i class="far fa-eye" data-viewId=<?= $employee->id?> ></i></a>
-                    <button data-update='<?= $employee->id?>' class="btn btn-outline-secondary"><i class="fas fa-user-edit"></i></button>
-                    <a data-delete = '<?= $employee->id?>' class="btn btn-outline-danger" href="#deleteModal" data-toggle="modal"><i class="far fa-trash-alt"></i></a>
+                    <!-- <button data-update='<?= $employee->id?>' class="btn btn-outline-secondary"><i class="fas fa-user-edit"></i></button> -->
+                    <button class="deleteBtn btn btn-outline-danger" data-id="<?= $employee->id?>"><i class="far fa-trash-alt"></i></button>
+                    <!-- <a data-delete = '<?= $employee->id?>' class="btn btn-outline-danger" href="#deleteModal" data-toggle="modal"><i class="far fa-trash-alt"></i></a> -->
                 </td>
             </tr>
         <?php endforeach; ?>

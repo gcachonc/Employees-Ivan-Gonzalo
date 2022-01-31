@@ -5,6 +5,7 @@ class EmployeeController extends Controller
     function __construct()
     {
         parent::__construct();
+        $this->mensaje = "";
     }
 
     function getEmployee($param = null) {
@@ -63,7 +64,7 @@ class EmployeeController extends Controller
             $employee->phoneNumber = $phoneNumber;
 
             $this->view->employee = $employee;
-            $this->view->mensaje = "Employee succes updated";
+            $this->view->mensaje = "Employee succesfully updated";
 
         } else {
             // mensaje de error
@@ -71,5 +72,71 @@ class EmployeeController extends Controller
             $this->view->mensaje = $this->model->message;
         }
         $this->view->render('employee/employeeInfo');
+    }
+
+    
+    function render() {
+        $this->view->render('employee/addNewEmployee');
+    }
+    
+    function addNewEmployee() {
+
+        $name = $_POST['name'];
+        $lastName = $_POST['lastName'];
+        $email = $_POST['email'];
+        $gender = $_POST['gender'];
+        $city = $_POST['city'];
+        $streetAddress = $_POST['streetAddress'];
+        $state = $_POST['state'];
+        $age = $_POST['age'];
+        $postalCode = $_POST['postalCode'];
+        $phoneNumber = $_POST['phoneNumber'];
+
+        $result = $this->model->insert([ 
+            'name' => $name, 
+            'lastName' => $lastName, 
+            'email' => $email, 
+            'gender' => $gender, 
+            'city' => $city, 
+            'streetAddress' => $streetAddress, 
+            'state' => $state, 
+            'age' => $age, 
+            'postalCode' => $postalCode, 
+            'phoneNumber' => $phoneNumber 
+        ]);
+        
+        $mensaje = "";
+        
+        if($result) {
+            $mensaje = "Nuevo alumno creado";
+        } else {
+            $mensaje = "Error al crear el alumno";
+        }
+        
+        $this->view->mensaje = $this->model->message;
+        $this->render();
+    }
+
+
+    function deleteEmployee($param = null) {
+        $id = $param[0];
+        //unset($_SESSION['id_verAlumno']);
+        
+        $result = $this->model->delete($id);
+    
+        //if($result) {
+            //actualizar alumno exito sync
+            //$this->view->mensaje = "Alumno eliminado correctamente";
+            //$this->view->mensaje = $this->model->message;
+            //$mensaje = "Alumno eliminado correctamente";
+        //} else {
+            // mensaje de error sync
+            //$this->view->mensaje = "Error al eliminar el alumno";
+    
+           // $this->view->mensaje = $this->model->message;
+            //$mensaje = "Error al eliminar el alumno";
+        //}
+        //$this->render();
+        //echo $mensaje;
     }
 }

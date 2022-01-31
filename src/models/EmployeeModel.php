@@ -38,19 +38,7 @@ class EmployeeModel extends Model
     }
 
     public function update($item) {
-        $query = $this->db->connect()->prepare("UPDATE employees SET 
-        name = :name, 
-        lastName = :lastName,
-        email = :email,
-        gender = :gender,
-        age = :age,
-        streetAddress = :streetAddress,
-        city = :city,
-        state = :state,
-        postalCode = :postalCode,
-        phoneNumber = :phoneNumber
-
-        WHERE id = :id");
+        $query = $this->db->connect()->prepare("UPDATE employees SET name = :name, lastName = :lastName, email = :email, gender = :gender, age = :age, streetAddress = :streetAddress, city = :city, state = :state, postalCode = :postalCode, phoneNumber = :phoneNumber WHERE id = :id");
 
         try {
             $query->execute([
@@ -73,4 +61,42 @@ class EmployeeModel extends Model
             //echo "The user could not be added.<br>".$e->getMessage();
         }
     }
+
+    public function insert($data) {
+        var_dump($data);
+        try{
+            //Insertar datos en la db
+            $query = $this->db->connect()->prepare("INSERT INTO employees (name, lastName, email, gender, age, streetAddress, city, state, postalCode, phoneNumber) VALUES (:name, :lastName, :email, :gender, :age, :streetAddress, :city, :state, :postalCode, :phoneNumber)");
+            $query->execute([
+                'name' => $data['name'],
+                'lastName' => $data['lastName'],
+                'email' => $data['email'],
+                'gender' => $data['gender'],
+                'age' => $data['age'],
+                'streetAddress' => $data['streetAddress'],
+                'city' => $data['city'],
+                'state' => $data['state'],
+                'postalCode' => $data['postalCode'],
+                'phoneNumber' => $data['phoneNumber']
+            ]);
+            return true;
+        } catch(PDOException $e) {
+            $this->message = "The user could not be added.<br>".$e->getMessage();
+            return false;
+        }
+    }
+
+    public function delete($id) {
+        $query = $this->db->connect()->prepare("DELETE FROM employees WHERE id = :id");
+
+        try {
+            $query->execute([
+                'id' => $id,
+            ]);
+            return true;
+        } catch (PDOException $e) {
+            return false;
+            //$this->message = "The user could not be added.<br>".$e->getMessage();
+        }
+     }
 }

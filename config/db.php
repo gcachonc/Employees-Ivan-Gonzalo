@@ -1,6 +1,6 @@
 <?php
 // DATABASE CONFIG
-define('HOST', "localhost");
+define('HOST', "localhost:3306");
 define('PORT', 3306);
 define('USER', 'root');
 define('PASSWORD', '');

@@ -23,46 +23,46 @@
     <main class="container container-xl my-5">
         <div class="card">
             <div class="card-header">
-                <h3>Employee details: <b><?= $this->employee->name." ".$this->employee->lastName?></b></h3>
+                <h3>New Employee</b></h3>
             </div>
             <div class="card-body">
-                <form action="<?= BASE_URL . 'employee/updateEmployee/' . $this->employee->id?>" method="POST" enctype="multipart/form"> 
+                <form action="<?= BASE_URL . 'employee/addNewEmployee'?>" method="POST" enctype="multipart/form"> 
                     <div class="d-flex justify-content-center">
                         <div class="col-4">
                             <div class="form-group">
                                 <label>Name</label>
-                                <input type="text" name="name" value="<?= $this->employee->name?>" class="form-control" required>
+                                <input type="text" name="name" class="form-control" required>
                             </div>
                     
                             <div class="form-group">
                                 <label>Email</label>
-                                <input type="text" name="email" value="<?= $this->employee->email?>" class="form-control" required>
+                                <input type="text" name="email" class="form-control" required>
                             </div>
                     
                             <div class="form-group">
                                 <label>City</label>
-                                <input type="text" name="city" value="<?= $this->employee->city?>" class="form-control" required>
+                                <input type="text" name="city" class="form-control" required>
                             </div>
                     
                             <div class="form-group">
                                 <label>State</label>
-                                <input type="text" name="state" value="<?= $this->employee->state?>" class="form-control" required>
+                                <input type="text" name="state" class="form-control" required>
                             </div>
                     
                             <div class="form-group">
                                 <label>Postal Code</label>
-                                <input type="text" name="postalCode" value="<?= $this->employee->postalCode?>" class="form-control" required>
+                                <input type="text" name="postalCode" class="form-control" required>
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="form-group">
                                 <label>Last Name</label>
-                                <input type="text" name="lastName" value="<?= $this->employee->lastName?>" class="form-control" required>
+                                <input type="text" name="lastName" class="form-control" required>
                             </div>
         
                             <div class="form-group">
                                 <label>Gender</label>
-                                <select name="gender" value="<?= $this->employee->gender?>" class="form-control" required>
+                                <select name="gender" class="form-control" required>
                                     <option value="male">man</option>
                                     <option value="male">woman</option>
                                 </select>
@@ -70,21 +70,21 @@
         
                             <div class="form-group">
                                 <label>Street Address</label>
-                                <input type="text" name="streetAddress" value="<?= $this->employee->streetAddress?>" class="form-control" required>
+                                <input type="text" name="streetAddress" class="form-control" required>
                             </div>
         
                             <div class="form-group">
                                 <label>Age</label>
-                                <input type="text" name="age" value="<?= $this->employee->age?>" class="form-control" required>
+                                <input type="text" name="age" class="form-control" required>
                             </div>
         
                             <div class="form-group">
                                 <label>Phone Number</label>
-                                <input type="text" name="phoneNumber" value="<?= $this->employee->phoneNumber?>" class="form-control" required>
+                                <input type="text" name="phoneNumber" class="form-control" required>
                             </div>
                             <div class="d-flex justify-content-end">
                                 <a href="<?= BASE_URL . '/dashboard'?>" class="btn btn-secondary mx-2">Cancel</a>
-                                <input type="submit" value="Update" class="btn btn-success mx-2">
+                                <input type="submit" value="Add new employee" class="btn btn-success mx-2">
                             </div>
                         </div>
                     </div>
