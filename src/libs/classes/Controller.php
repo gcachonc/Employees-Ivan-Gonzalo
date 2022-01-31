@@ -2,14 +2,24 @@
 
 class Controller
 {
-    protected $view;
-    protected $model;
+    // protected $view;
+    // protected $model;
 
     function __construct()
     {
-        $this->view = new View;
+        $this->view = new View();
     }
 
+    function loadModel($model){
+        $model = ucfirst($model);
+        $url = BASE_PATH . '/src/models/' .  $model . 'Model.php';
+
+        if(file_exists($url)) {
+            require $url;
+            $modelName = $model.'Model';
+            $this->model = new $modelName();
+        }
+    }
     // function loadModel($name)
     // {
     //     require_once MODELS . "/{$name}Model.php";
